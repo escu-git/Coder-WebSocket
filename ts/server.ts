@@ -4,7 +4,7 @@ const {appRouter} = require('./helpers/appRouter.js');
 const {manageNewProduct, manageNewMessage, persistentHistory} = require('./helpers/socketFunctions.js');
 const handlebarsEngine = require('./helpers/handlebars');
 
-const PORT = process.env.PORT || 8080;
+const PORT:number= parseInt(process.env.PORT as string, 10) || 8080;
 app.use('/api', appRouter);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -21,14 +21,14 @@ http.listen(PORT, ()=>{
     console.log(`Server initializated on port ${PORT}`)
 });
 
-io.on('connection', (socket)=>{
+io.on('connection', (socket: any)=>{
     console.log('User connected')
     socket.emit('message', 'mensaje socket')
     persistentHistory(socket)
-    socket.on('newProduct',(data)=>{
+    socket.on('newProduct',(data: object)=>{
         manageNewProduct(data, socket)
     })
-    socket.on('newMessage', msg=>{
+    socket.on('newMessage', (msg:object)=>{
         manageNewMessage(msg, socket, io)
     })
 })
