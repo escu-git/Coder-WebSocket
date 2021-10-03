@@ -1,15 +1,15 @@
 const express = require('express');
 const appRouter = express.Router();
-const product = require('./classes');
+const Product = require('./classes');
 
-const productos = [];
+const productos:Array = [];
 
-// appRouter.post('/',(req, res)=>{
+// appRouter.post('/',(req:any, res:any)=>{
 //     console.log(req.body)
 //     res.json({message: req.body})
 // })
 
-appRouter.get('/home', (req, res)=>{
+appRouter.get('/home', (req:any, res:any)=>{
     try{
     if(productos.length != 0) {
         res.render('main', {products: productos, exist:true})
@@ -21,7 +21,7 @@ appRouter.get('/home', (req, res)=>{
     }
 })
 
-appRouter.get('/productos/listar', (req, res)=>{
+appRouter.get('/productos/listar', (req:any, res:any)=>{
     try{
         if(productos.length == 0){
             return res.status(400).json({error:'No hay productos para mostrar'})
@@ -34,17 +34,17 @@ appRouter.get('/productos/listar', (req, res)=>{
     }
 });
 
-appRouter.get('/productos/listar/:id', (req, res)=>{
+appRouter.get('/productos/listar/:id', (req:any, res:any)=>{
     try{
-        const productId = req.params.id;
-        const showProduct = productos.find(x=>x.id == productId)
+        const productId:object = req.params.id;
+        const showProduct:object = productos.find((x:any)=>x.id == productId)
         showProduct == undefined ? res.status(400).json({err:`Product ${productId} does not exist`}) : res.status(200).json({data:showProduct})
     }catch(err){
         res.status(400).json({err:err})
     }
 });
 
-appRouter.post('/productos/guardar', (req, res)=>{
+appRouter.post('/productos/guardar', (req:any, res:any)=>{
    try{
     const {title, price, thumbnail}=req.body;
     const newProduct = new product(title, price, thumbnail);
@@ -56,10 +56,10 @@ appRouter.post('/productos/guardar', (req, res)=>{
     }
 });
 
-appRouter.put('/productos/update/:id', (req, res)=>{
+appRouter.put('/productos/update/:id', (req:any, res:any)=>{
     try{
         const {id} = req.body;
-        const productIndex = productos.findIndex(x=>x.id == id);
+        const productIndex = productos.findIndex((x:any)=>x.id == id);
         const productAttributes = Object.entries(req.body)
         productAttributes.forEach(x=>{
             let attr = x[0];
@@ -74,10 +74,10 @@ appRouter.put('/productos/update/:id', (req, res)=>{
     }
 })
 
-appRouter.delete('/productos/delete/:id', (req, res)=>{
+appRouter.delete('/productos/delete/:id', (req:any, res:any)=>{
     try{
-        const idRequested = req.params.id;
-        const productIndex = productos.findIndex(x=> x.id == idRequested);
+        const idRequested:number = req.params.id;
+        const productIndex:number = productos.findIndex((x:any)=> x.id == idRequested);
         const deletedProduct = () => {
             productos.splice(productIndex,1)
             res.status(200).json({deletedProduct:productos[productIndex], allProducts:productos})

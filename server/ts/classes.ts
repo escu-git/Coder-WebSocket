@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class product{
+class Product{
     constructor(title, price, thumbnail){
         this.title = title,
         this.price = price,
@@ -12,7 +12,7 @@ class product{
 }
 
 
-class file{
+class File{
     constructor(file){
         this.file = file;
     };
@@ -46,4 +46,4 @@ class file{
         }
     }
 }
-module.exports = {product, file};
+module.exports = {Product,File};
