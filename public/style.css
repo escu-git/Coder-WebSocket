@@ -1,0 +1,68 @@
+:root{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode'
+    }
+    header{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: rgba(35, 197, 209, 0.205);;
+        margin-bottom:20px;
+        border-bottom:1px solid rgba(35, 197, 209, 0.774);
+
+    }
+    form{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:20px;
+    }
+    fieldset{
+        width:60%;
+        border:1px solid rgba(35, 197, 209, 0.774);
+        background-color: rgba(144, 238, 144, 0.384);
+        padding:10px;
+    }
+    legend{
+        font-size:1.5em;
+        
+    }
+
+    h1{
+        font-size: 2em;
+        text-align: center;
+    }
+
+    table{
+        width:60%;
+        margin:auto;
+        border:1px solid black;
+    }
+    tr{
+        background-color: rgba(32, 178, 171, 0.596);
+        text-align: center;
+        font-size:1.5em;
+    }
+
+    img{
+        width:100px;
+        height:100px;
+        border-radius: 20px;
+    }
+
+    table{
+        width:60%;
+        margin:auto
+    }
+    .tableHeader{
+        background-color: lightgreen;
+    }
+    .col{
+        display:flex;
+        justify-content: center;
+    }
+    td, th{
+        border:1px solid black;
+    }
+    .thumbnail, .title, .price, .id{
+        text-align: center;
+    }
